@@ -1,22 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE movieDb [
-  <!ELEMENT movieDb (conductors,movies,actors)>
-  <!ELEMENT conductor (name)>
-  <!ATTLIST conductor id ID>
-  <!ATTLIST conductor conducted CDATA>
-  <!ELEMENT movies (movie)>
-  <!ELEMENT movie (title, year)>
-  <!ATTLIST movie id ID>
-  <!ELEMENT title (#PCDATA)>
-  <!ELEMENT year (#PCDATA)>
-  <!ELEMENT actors (actor)>
-  <!ELEMENT actor (name)>
-  <!ATTLIST actor id ID>
-  <!ATTLIST actor playedIn CDATA>
-  <!ELEMENT name (lastname, firstname)>
-  <!ELEMENT lastname (#PCDATA)>
-  <!ELEMENT firstname (#PCDATA)>
-]>
+<!DOCTYPE movieDb SYSTEM "movieDB.dtd">
 <movieDb>
     <conductors>
         <conductor id="pwegener" conducted="studprag,golem">
