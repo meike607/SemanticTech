@@ -1,0 +1,49 @@
+> object call_api python
+    import requests
+    URL = "https://opendata.arcgis.com/datasets/dd4580c810204019a7b8eb3e0b329dd6_0.geojson"
+    try:
+        response = requests.get(URL)
+    except requests.exceptions.RequestException as e:
+        raise SystemExit(e)
+
+    response = response.json()
+    items = response["features"]
+    current_cases = sum(
+        [
+            item["properties"]["AnzahlFall"]
+            for item in items
+            if item["properties"]["NeuerFall"] in [0, 1]
+        ]
+    )
+    current_death_cases = sum(
+        [
+            item["properties"]["AnzahlTodesfall"]
+            for item in items
+            if item["properties"]["NeuerFall"] in [0, 1]
+        ]
+    )
+    current_recovered_cases = sum(
+        [
+            item["properties"]["AnzahlGenesen"]
+            for item in items
+            if item["properties"]["NeuGenesen"] in [0, 1]
+        ]
+    )
+    if "CASES" in args:
+        return current_cases
+    if "DEATH" in args:
+        return current_death_cases
+    if "RECOVERED" in args:
+        return current_recovered_cases
+< object
+
++ how many persons have corona in germany
+- There are <call>call_api CASES </call> persons who have corona in germany
+
++ how many persons have died from corona in germany
+- There are <call>call_api DEATH </call> persons who died from corona in germany
+
++ how many persons have recovered from corona in germany
+- There are <call>call_api RECOVERED </call> who recovered from corona in germany
+
+
