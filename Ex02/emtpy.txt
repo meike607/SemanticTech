@@ -1,0 +1,98 @@
++ my name is *
+- <set name=<star>>It's nice to meet you, <get name>.
+
++ what is my name
+- Your name is <get name>, silly!
+
++ i am # years old
+- <set age=<star>>I will remember that you are <get age> years old.
+
++ how old am i
+- You are <get age> years old.
+
++ what is your name
+- You can call me <bot name>.
+- My name is <bot name>.
+
++ how old are you
+- I am <bot age> years old.
+
+// save name 
++ my name is *
+- <set name=<formal>>Nice to meet you, <get name>
+
++ what is my name
+* <get name> == undefined => You never told me your name.
+- Your name is <get name>, silly!
+- Aren't you <get name>?
+
++ my name is *
+* <formal>   == <bot name> => Wow, we have the same name!<set name=<formal>>
+* <get name> == undefined  => <set name=<formal>>Nice to meet you!
+- <set oldname=<get name>><set name=<formal>>
+^ I thought your name was <get oldname>?
+
+// CONDITIONALS 
++ what am i old enough to do
+* <get age> == undefined => I don't know how old you are.
+* <get age> >  25 => You can do anything you want.
+* <get age> == 25 => You're old enough to rent a car with no extra fees.
+* <get age> >  21 => You're old enough to drink, but not rent a car.
+* <get age> == 21 => You're exactly old enough to drink.
+* <get age> >  18 => You're old enough to gamble, but not drink.
+* <get age> == 18 => You're exactly old enough to gamble.
+- You're not old enough to do much of anything yet.
+
+// SECTIONS
++ i hate you
+- You're really mean! I'm not talking again until you apologize.{topic=sorry}
+
+> topic sorry
+
+  // This will match if the word "sorry" exists ANYWHERE in their message
+  + [*] sorry [*]
+  - It's OK, I'll forgive you!{topic=random}
+
+  + *
+  - Nope, not until you apologize.
+  - Say you're sorry!
+  - Apologize!
+
+< topic
+...
+
+// OBJECT MACROS
+// The object name is "hash", written in Perl
+> object hash perl
+  my ($rs, $args) = @_;
+  my $method = shift @{$args};
+  my $string = join " ", @{$args};
+
+  # Here, $method is a hashing method (MD5 or SHA1), and $string
+  # is the text to hash.
+
+  if ($method eq "MD5") {
+    require Digest::MD5;
+    return Digest::MD5::md5_hex($string);
+  }
+  elsif ($method eq "SHA1") {
+    require Digest::SHA1;
+    return Digest::SHA1::sha1_hex($string);
+  }
+< object
+
+// You call an object using the <call> tag.
++ what is the md5 hash of *
+- The hash of "<star>" is: <call>hash MD5 <star></call>
+
++ what is the sha1 hash of *
+- The hash of "<star>" is: <call>hash SHA1 <star></call>
+
+// GLOBALS
+! global debug = true
+! global debug = false
+
+//TAGS...
+https://www.rivescript.com/docs/tutorial
+
+
