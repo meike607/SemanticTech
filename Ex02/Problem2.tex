@@ -14,10 +14,21 @@
 Problem 2: Rivescript
 \end{Large}
 \end{center}
-Can a human psychiatrist be distinguished from \textit{Eliza}?
+\textbf{Can a human psychiatrist be distinguished from \textit{Eliza}}?\\
+
+The main weakness of \textit{Eliza} is that it can only answer the current question, regardless of the overall context. 
+Therefore, a question that makes it possible to recognize that it is not a human psychologist could be, for example, as follows: 'What was the previous question again?'.
+\textit{Eliza} has no memory, it only gives respective answers, so mostly it answers with another question. It will never This weakness can be used to win the imitation game and distinguish \textit{Eliza} from a human.
+\newline
 
 
-Characterization of how \textit{Eliza} learns about the user:
+\noindent \textbf{Characterization of how \textit{Eliza} learns about the user:}\\
 
+The communication with \textit{Eliza} is simple. It receives a question and responds with an answer. This answer results from a defined logic in which answer texts are assigned to question patterns. Occasionally the answer picks up the content of the question again, so that the answer is individually adapted to the question. 
+To answer the question whether \textit{Eliza} learns from the user, the definition of learning must first be considered. One possible definition is learning as 'gain[ing] knowledge or skill by studying, from experience, from being taught, etc.'\footnote{https://www.oxfordlearnersdictionaries.com/definition/english/learn, 2020/11/05}. As a result, it is assumed, that by learning, the answers of \textit{Eliza} are variable. However, this is not the case. If \textit{Eliza} is asked a question, it will answer it. For example, if the question 'I remember last year' is asked, it may answer 'Do you often think of last year?' Right in this moment, while processing the answer, \textit{Eliza} 'learns' from the question and incorporates what it has learned into the answer. The way \textit{Eliza} answers the questions is cognitivism. It searches for the appropriate answer according to defined rules and integrates the defined building block into the answer. In order to get other answers, \textit{Eliza's} stored logic must be changed. Another learning patterns, the behaviorism, would require \textit{Eliza} to learn from the answers and optimize future patterns, while the exact behavior is a black box. But exactly this is not the case. \textit{Eliza} will not be able to remember the previous question and will react to the second question in the same way as to the first question: It always reacts with an open question, which partially integrates components of the input. Therefore it is possible to provide a second input that has nothing to do with the original topic. Eliza will then react to the question as if the topic jump had never happened. So if you say 'No, I do not think about tomorrow' it will answer with 'Why don't you think about tomorrow?'\\ 
+
+For this reason, it is also incorrect (from the point of view of a user who only interacts with Eliza and cannot change anything in its logic) to say, that \textit{Eliza} learns in a cognitive way. There is no actual learning process as the reaction pattern and logic behind it is not changed. \textit{Eliza} does not remember the answers permanently, or at least longer than one more question, does not change his behavior when he is told that his answer is not appropriate.\\
+
+In sum, a learning process can only be assumed if the user (the teacher) has the possibility to change the logic of \textit{Eliza}. Then one would speak of cognitivism, since the teacher changes the rules to be applied and thus influences the behavior of \textit{Eliza}. This is more an extrinsic learning process: Eliza does not learn from different results or negative feedback, but the rules of its behavioral control are actively manipulated. But if the user does not have this possibility, \textit{Eliza} does not learn anything from the user beyond the next question. 
 }
 \end{document}
